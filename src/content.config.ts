@@ -17,4 +17,9 @@ const blog = defineCollection({
 		}),
 });
 
-export const collections = { blog };
+const index = defineCollection({
+	// Load the `src/content/index.mdx` file.
+	loader: glob({ base: './src/content', pattern: 'index.mdx' }),
+});
+
+export const collections = { blog, index };
