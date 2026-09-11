@@ -1,0 +1,48 @@
+---
+interface Props {
+	owner: string;
+	repo: string;
+	links?: { href: string; label: string }[];
+}
+
+const { owner, repo, links = [] } = Astro.props;
+
+let description = '';
+try {
+	const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+	if (res.ok) {
+		const data = await res.json();
+		description = data.description ?? '';
+	}
+} catch {
+	// Leave the description blank if the GitHub API request fails at build time.
+}
+---
+
+<div class="repo-card">
+	<a
+		class="repo-card-main"
+		href={`https://github.com/${owner}/${repo}`}
+		target="_blank"
+		rel="noopener noreferrer"
+	>
+		<img
+			class="repo-card-thumbnail"
+			src={`https://opengraph.githubassets.com/1/${owner}/${repo}`}
+			alt={repo}
+		/>
+		<span class="repo-card-title">{repo}</span>
+	</a>
+	{description && <p class="repo-card-description">{description}</p>}
+	{
+		links.length > 0 && (
+			<div class="repo-card-links">
+				{links.map((link) => (
+					<a class="repo-card-link" href={link.href} target="_blank" rel="noopener noreferrer">
+						{link.label}
+					</a>
+				))}
+			</div>
+		)
+	}
+</div>

@@ -161,6 +161,12 @@ hr {
   font-weight: 700;
   color: rgb(var(--black));
 }
+.repo-card-description {
+  margin: 0;
+  padding: 0 1em 0.75em;
+  font-size: 0.85em;
+  color: rgb(var(--gray-dark));
+}
 .repo-card-links {
   display: flex;
   flex-wrap: wrap;

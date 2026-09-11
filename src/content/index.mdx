@@ -1,15 +1,11 @@
+import RepoCard from '../components/RepoCard.astro';
+
 # hide00310\'s Portfolio
 This is a website featuring the software I developed and my blog.
 
 <div class="repo-grid">
-  <div class="repo-card">
-    <a class="repo-card-main" href="https://github.com/hide00310/UniLiquidLink" target="_blank" rel="noopener noreferrer">
-      <img class="repo-card-thumbnail" src="https://opengraph.githubassets.com/1/hide00310/UniLiquidLink" alt="UniLiquidLink" />
-      <span class="repo-card-title">UniLiquidLink</span>
-    </a>
-    <div class="repo-card-links">
-      <a class="repo-card-link" href="https://dev.to/hide00310/i-built-a-library-to-operate-the-unity-editor-from-python-with-the-same-syntax-as-c-3c59" target="_blank" rel="noopener noreferrer">dev.to</a>
-      <a class="repo-card-link" href="https://zenn.dev/hide00310/articles/83cffa2531ec25" target="_blank" rel="noopener noreferrer">Zenn</a>
-    </div>
-  </div>
+  <RepoCard owner="hide00310" repo="UniLiquidLink" links={[
+    { href: "https://dev.to/hide00310/i-built-a-library-to-operate-the-unity-editor-from-python-with-the-same-syntax-as-c-3c59", label: "dev.to" },
+    { href: "https://zenn.dev/hide00310/articles/83cffa2531ec25", label: "Zenn" },
+  ]} />
 </div>
